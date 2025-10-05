@@ -9,8 +9,9 @@ def pick_device():
     return "cpu"
 
 def main():
-    training_set = r"/Users/jingyu/Documents/NIC_CV/F25-NuclearIC/Loading_Unloading_Subproblem/Loading_Unloading_Training_Files/data.yaml"
-    device = pick_device()
+    repo_root = os.path.dirname(os.path.abspath(__file__))  # the script’s directory
+    training_set = os.path.join(repo_root, "Loading_Unloading_Training_Files/data.yaml")
+    output_dir = os.path.join(repo_root, "outputs")
 
     model = YOLO("yolo11s.pt")   # try s/m instead of n for better capacity
     results = model.train(
@@ -28,3 +29,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
