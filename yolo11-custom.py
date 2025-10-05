@@ -13,6 +13,9 @@ def main():
     training_set = os.path.join(repo_root, "Loading_Unloading_Training_Files/data.yaml")
     output_dir = os.path.join(repo_root, "outputs")
 
+    os.makedirs(output_dir, exist_ok=True)
+    device = pick_device()
+
     model = YOLO("yolo11s.pt")   # try s/m instead of n for better capacity
     results = model.train(
         data=training_set,
@@ -29,4 +32,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
